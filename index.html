@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
+    />
+  </head>
+  <body>
+    <div class="contact_container">
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        class="left_container"
+      >
+        <input
+          type="hidden"
+          name="access_key"
+          value="3edc1a9b-bd46-4bd8-a9b5-78784ff0a4b1"
+        />
+        <div class="contact_left_title">
+          <h2>Contact Us</h2>
+          <hr />
+        </div>
+        <input
+          class="inputs"
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          required
+        />
+        <input
+          class="inputs"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Enter your message"
+          required
+        ></textarea>
+        <button type="submit">
+          Submit
+          <img src="./assets/arrow_icon.png" />
+        </button>
+      </form>
+      <div class="right_container">
+        <!-- <img src="./assets/sun.gif" alt="sun image" > -->
+        <div id="observablehq-chart-6fd11f1f"></div>
+      </div>
+    </div>
+
+    <script type="module">
+      import {
+        Runtime,
+        Inspector,
+      } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+      import define from "https://api.observablehq.com/@d3/disjoint-force-directed-graph/2.js?v=4";
+      new Runtime().module(define, (name) => {
+        if (name === "chart")
+          return new Inspector(
+            document.querySelector("#observablehq-chart-6fd11f1f")
+          );
+      });
+    </script>
+  </body>
+</html>
